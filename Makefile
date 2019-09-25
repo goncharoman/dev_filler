@@ -6,7 +6,7 @@
 #    By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/20 00:11:07 by ujyzene           #+#    #+#              #
-#    Updated: 2019/09/24 02:41:35 by ujyzene          ###   ########.fr        #
+#    Updated: 2019/09/25 14:58:58 by ujyzene          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,9 +24,9 @@ LIB = $(LIB_DIR)/libft.a
 
 FILES = main.c \
 		init.c \
-		get_params.c \
-		test.c \
-		heat_map.c
+		init_data1.c \
+		init_data2.c \
+		test.c
 
 LIBFT_INCL = -I $(LIB_DIR)/includes
 LIBFT_LINK = -L $(LIB_DIR) -lft

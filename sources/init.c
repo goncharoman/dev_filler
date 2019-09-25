@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 14:45:00 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/09/24 11:49:16 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/09/25 14:57:51 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,62 +41,40 @@ int	get_player_info(int fd, t_filler *dest)
 	return (1);
 }
 
+static t_elem	*elem_init(void)
+{
+	t_elem *tmp;
+
+	if (!(tmp = (t_elem*)malloc(sizeof(t_elem))))
+		return (NULL);
+	tmp->x = 0; // col
+	tmp->y = 0;	// row
+	tmp->data = NULL;
+	return (tmp);
+}
+
 t_filler *filler_init(void)
 {
 	t_filler *filler;
 
 	filler = (t_filler*)malloc(sizeof(t_filler));
-	filler->token = (t_token*)malloc(sizeof(t_token));
-	filler->token->x = 0;
-	filler->token->y = 0;
-	filler->token->token = NULL;
-	filler->map = NULL;
-	filler->imap = NULL;
+	filler->token = elem_init();
+	filler->map = elem_init();
 	filler->me = 0;
 	filler->en = 0;
-	filler->x = 0;
-	filler->y = 0;
-	filler->res = 0;
-	filler->res2 = -1;
 	filler->score = 1000000;
 	return (filler);
 }
 
-static int	get_hvalue(char c, char en, char me)
+void init_data(int fd, t_filler *filler)
 {
-	if (c == '.')
-		return (0);
-	else if (c == en)
-		return (EN);
-	else if (c == me)
-		return (ME);
-	else
-		return (-3);
-}
-
-int	init_imap(t_filler *dest)
-{
-	int		**map;
-	char	**tmp;
-	int		i;
-	int		j;
-
-	if (!(map = (int**)malloc(sizeof(int*) * dest->y)))
-		return (0);
-	tmp = dest->map;
-	i = 0;
-	while (tmp[i])
-	{
-		map[i] = (int*)malloc(sizeof(int) * dest->x);
-		j = 0;
-		while (tmp[i][j])
-		{
-			map[i][j] = get_hvalue(tmp[i][j], dest->en, dest->me);
-			j++;
-		}
-		i++;
-	}
-	dest->imap = map;
-	get_heat_map(dest);
-	return (1);
+	if (!get_params(fd, filler))
+	// сообщение об ошибке
+		return ;
+	if (!init_imap(filler))
+	// сообщение об ошибке
+		return ;
+	if (!get_heat_map(filler))
+	// сообщение об ошибке
+		return ;
 }
