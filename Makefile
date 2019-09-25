@@ -6,7 +6,7 @@
 #    By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/20 00:11:07 by ujyzene           #+#    #+#              #
-#    Updated: 2019/09/25 14:58:58 by ujyzene          ###   ########.fr        #
+#    Updated: 2019/09/25 19:03:09 by ujyzene          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME = ujyzene.filler
 
 CC = gcc
-FLAGS = -g -Wall -Wextra
+FLAGS = -g -Wall -Wextra -Werror
 
 SRCS_PATH = sources
 TEMPS_PATH = temp
@@ -26,6 +26,8 @@ FILES = main.c \
 		init.c \
 		init_data1.c \
 		init_data2.c \
+		helpers.c \
+		solve.c \
 		test.c
 
 LIBFT_INCL = -I $(LIB_DIR)/includes

@@ -1,55 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_params.c                                       :+:      :+:    :+:   */
+/*   init_data1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 16:12:50 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/09/25 14:46:24 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/09/25 16:27:23 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
-static int	get_hvalue(char c, char en, char me)
-{
-	if (c == '.')
-		return (0);
-	else if (c == en)
-		return (EN);
-	else if (c == me)
-		return (ME);
-	else
-		return (-3);
-}
-
-int	init_imap(t_filler *dest)
+int		init_imap(t_elem *elem, char c1, char c2, int (*f)(char, char, char))
 {
 	int		**imap;
-	t_elem	*map;
 	char	**tmp;
 	int		i;
 	int		j;
 
-	map = dest->map;
-	if (!(imap = (int**)malloc(sizeof(int*) * map->y)))
+	if (!(imap = (int**)malloc(sizeof(int*) * elem->y)))
 		return (0);
-	tmp = (char**)map->data;
+	tmp = (char**)elem->data;
 	i = 0;
 	while (tmp[i])
 	{
-		imap[i] = (int*)malloc(sizeof(int) * map->x);
+		imap[i] = (int*)malloc(sizeof(int) * elem->x);
 		j = 0;
 		while (tmp[i][j])
 		{
-			imap[i][j] = get_hvalue(tmp[i][j], dest->en, dest->me);
+			imap[i][j] = (*f)(tmp[i][j], c1, c2);
 			j++;
 		}
 		i++;
 	}
 	ft_strarrdel(&tmp);
-	map->data = (void**)imap;
+	elem->data = (void**)imap;
 	return (1);
 }
 

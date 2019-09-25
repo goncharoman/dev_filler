@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 14:45:00 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/09/25 14:57:51 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/09/25 19:53:51 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,21 @@ t_filler *filler_init(void)
 	return (filler);
 }
 
+void	pos_init(t_pos *p)
+{
+	p->x = 0;
+	p->y = 0;
+}
+
 void init_data(int fd, t_filler *filler)
 {
 	if (!get_params(fd, filler))
 	// сообщение об ошибке
 		return ;
-	if (!init_imap(filler))
+	if (!init_imap(filler->map, filler->en, filler->me, &set_me_en))
+	// сообщение об ошибке
+		return ;
+	if (!init_imap(filler->token, '*', '.', &set_str_dot))
 	// сообщение об ошибке
 		return ;
 	if (!get_heat_map(filler))
