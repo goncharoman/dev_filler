@@ -6,34 +6,35 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 12:42:28 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/09/25 22:24:24 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/09/26 13:44:21 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
-int		score_count(t_elem elem, t_pos map, t_pos p, t_pos tmp, int *score)
+int		score_count(t_elem elem, t_pos map, t_pos p, int *score)
 {
 	int **board;
 
 	board = (int**)elem.data;
-	if (map.y + p.y - tmp.y < 0 || map.y + p.y - tmp.y >= elem.y ||
-			map.x + p.x - tmp.x < 0 || map.x + p.x - tmp.x >= elem.x)
+	if (map.y - p.y < 0 || map.y - p.y >= elem.y || 
+		map.x - p.x < 0 || map.y - p.y >= elem.x)
 		return (1);
-	if (board[map.y + p.y - tmp.y][map.x + p.x - tmp.x] == ME ||
-			board[map.y + p.y - tmp.y][map.x + p.x - tmp.x] == EN)
+	if (board[map.y - p.y][map.x - p.x] == ME || 
+		board[map.y - p.y][map.x - p.x] == EN)
 	{
-		if (p.x != tmp.x || p.y != tmp.y)
+		if (p.x != 0 || p.y != 0)
 			return (1);
 	}
-	if (board[map.y + p.y - tmp.y][map.x + p.x - tmp.x] != ME)
-		*score += board[map.y + p.y - tmp.y][map.x + p.x - tmp.x];
+	if (board[map.y - p.y][map.x - p.x] != ME)
+		*score += board[map.y - p.y][map.x - p.x];
 	return (0);
 }
 
 int			score_before(t_filler *filler, t_pos map, t_pos p, int *score)
 {
 	t_pos	tmp;
+	t_pos	d;
 	int		**board;
 
 	board = (int**)filler->token->data;
@@ -44,8 +45,11 @@ int			score_before(t_filler *filler, t_pos map, t_pos p, int *score)
 		while (p.x >= 0)
 		{
 			if (board[p.y][p.x] == 1)
-				if (score_count(*filler->map, map, p, tmp, score))
+			{
+				pos_set(&d, p.x - tmp.x, p.y - tmp.y);
+				if (score_count(*filler->map, map, d, score))
 					return (0);
+			}
 			p.x--;
 		}
 		p.x = filler->token->x - 1;
@@ -57,6 +61,7 @@ int			score_before(t_filler *filler, t_pos map, t_pos p, int *score)
 int			score_after(t_filler *filler, t_pos map, t_pos p, int *score)
 {
 	t_pos	tmp;
+	t_pos	d;
 	int		**board;
 
 	board = (int**)filler->token->data;
@@ -67,8 +72,11 @@ int			score_after(t_filler *filler, t_pos map, t_pos p, int *score)
 		while (p.x < filler->token->x)
 		{
 			if (board[p.y][p.x] == 1)
-				if (score_count(*filler->map, map, p, tmp, score))
+			{
+				pos_set(&d, p.x - tmp.x, p.y - tmp.y);
+				if (score_count(*filler->map, map, d, score))
 					return (0);
+			}
 			p.x++;
 		}
 		p.x = 0;
@@ -111,8 +119,8 @@ int solve(t_filler *filler)
 	t_pos	token;
 	int		score;
 
-	pos_init(&map);
-	pos_init(&token);
+	pos_set(&map, 0, 0);
+	pos_set(&token, 0, 0);
 	while (foreach_elem(filler->map, &map, ME))
 	{
 		while (foreach_elem(filler->token, &token, 1))
