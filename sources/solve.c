@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 12:42:28 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/09/26 13:44:21 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/09/26 22:22:48 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int		score_count(t_elem elem, t_pos map, t_pos p, int *score)
 	int **board;
 
 	board = (int**)elem.data;
-	if (map.y - p.y < 0 || map.y - p.y >= elem.y || 
+	if (map.y - p.y < 0 || map.y - p.y >= elem.y ||
 		map.x - p.x < 0 || map.y - p.y >= elem.x)
 		return (1);
-	if (board[map.y - p.y][map.x - p.x] == ME || 
+	if (board[map.y - p.y][map.x - p.x] == ME ||
 		board[map.y - p.y][map.x - p.x] == EN)
 	{
 		if (p.x != 0 || p.y != 0)
@@ -38,8 +38,7 @@ int			score_before(t_filler *filler, t_pos map, t_pos p, int *score)
 	int		**board;
 
 	board = (int**)filler->token->data;
-	tmp.x = p.x;
-	tmp.y = p.y;
+	pos_set(&tmp, p.x, p.y);
 	while (p.y >= 0)
 	{
 		while (p.x >= 0)
@@ -65,8 +64,7 @@ int			score_after(t_filler *filler, t_pos map, t_pos p, int *score)
 	int		**board;
 
 	board = (int**)filler->token->data;
-	tmp.x = p.x;
-	tmp.y = p.y;
+	pos_set(&tmp, p.x, p.y);
 	while (p.y < filler->token->y)
 	{
 		while (p.x < filler->token->x)
