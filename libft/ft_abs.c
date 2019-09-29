@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strarrlen.c                                     :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/23 13:43:24 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/09/29 03:15:05 by ujyzene          ###   ########.fr       */
+/*   Created: 2019/09/29 01:31:49 by ujyzene           #+#    #+#             */
+/*   Updated: 2019/09/29 01:34:08 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int ft_strarrlen(char **strarr)
+intmax_t	ft_abs(intmax_t n)
 {
-	int len;
-
-	len = 0;
-	while (*strarr)
-	{
-		len++;
-		strarr++;
-	}
-	return (len);
+	return (n < 0 ? -n : n);
 }

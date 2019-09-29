@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/24 14:07:06 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/09/23 22:56:08 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/09/29 15:14:05 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,15 @@
 # include <string.h>
 # include <get_next_line.h>
 # define STCK_OUT -2147483648
-# define ABS(n) (n < 0 ? -n : n)
 # define MAX(n1, n2) (n1 >= n2 ? n1 : n2)
+
+/* probably need to remove */
+# ifdef __linux__
+	# include <stdint.h>
+	# define ABS(n) ft_abs(n)
+# elif __APPLE__
+	# define ABS(n) ((n < 0) ? -n : n)
+# endif
 
 typedef struct		s_list
 {
@@ -56,6 +63,7 @@ typedef union		u_double
 	}				spec;
 }					t_double_cast;
 
+intmax_t			ft_abs(intmax_t n);
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dst, const void *src, size_t n);

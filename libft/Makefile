@@ -6,7 +6,7 @@
 #    By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/24 13:55:20 by ujyzene           #+#    #+#              #
-#    Updated: 2019/09/23 22:56:35 by ujyzene          ###   ########.fr        #
+#    Updated: 2019/09/29 03:15:52 by ujyzene          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ FLAGS = -Wall -Wextra -Werror
 NAME = libft.a
 SRCS = .
 INCL = includes
-FILES = ft_atoi.c \
+FILES = ft_abs.c \
+		ft_atoi.c \
 		ft_bzero.c \
 		ft_isalnum.c \
 		ft_isalpha.c \

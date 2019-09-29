@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 13:17:57 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/08/11 23:16:03 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/09/29 01:41:52 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #define NRM(f) (f.spec.mnts | 0x10000000000000)
 #define SGN(n, x) (n < 0 ? -x : x)
 #define TEN(n) ((n << 3) + (n << 1))
-#define ABS(n) (n < 0 ? -n : n)
 
 static double	delta(size_t n)
 {
