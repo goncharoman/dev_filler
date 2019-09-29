@@ -6,7 +6,7 @@
 #    By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/20 00:11:07 by ujyzene           #+#    #+#              #
-#    Updated: 2019/09/25 19:03:09 by ujyzene          ###   ########.fr        #
+#    Updated: 2019/09/29 01:56:39 by ujyzene          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,10 +28,11 @@ FILES = main.c \
 		init_data2.c \
 		helpers.c \
 		solve.c \
+		result.c \
 		test.c
 
 LIBFT_INCL = -I $(LIB_DIR)/includes
-LIBFT_LINK = -L $(LIB_DIR) -lft
+LIBFT_LINK = -L$(LIB_DIR) -lft
 
 SRCS = $(addprefix $(SRCS_PATH)/, $(FILES))
 TEMPS = $(addprefix $(TEMPS_PATH)/, $(FILES:.c=.o))
@@ -42,7 +43,7 @@ TEMPS = $(addprefix $(TEMPS_PATH)/, $(FILES:.c=.o))
 all: $(NAME)
 
 $(NAME): $(LIB) $(TEMPS_PATH) $(TEMPS)
-	$(CC) $(FLAGS) $(LIBFT_INCL) $(LIBFT_LINK) -I $(INCL_PATH) -o $(NAME) $(TEMPS)
+	$(CC) $(FLAGS) $(LIBFT_INCL) -I $(INCL_PATH) -o $(NAME) $(TEMPS) $(LIBFT_LINK)
 
 $(LIB):
 	make -C $(LIB_DIR)
@@ -51,7 +52,7 @@ $(TEMPS_PATH):
 	mkdir -p $@
 
 $(TEMPS_PATH)/%.o : $(SRCS_PATH)/%.c
-	$(CC) $(FLAGS) $(LIBFT_INCL) -I $(INCL_PATH) -o $@ -c $<
+	$(CC) $(FLAGS) -I $(INCL_PATH) $(LIBFT_INCL) -o $@ -c $<
 
 # RULES
 clean:

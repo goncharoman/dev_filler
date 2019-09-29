@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 12:42:28 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/09/26 22:22:48 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/09/29 00:17:20 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,18 @@ int		score_count(t_elem elem, t_pos map, t_pos p, int *score)
 	int **board;
 
 	board = (int**)elem.data;
-	if (map.y - p.y < 0 || map.y - p.y >= elem.y ||
-		map.x - p.x < 0 || map.y - p.y >= elem.x)
-		return (1);
-	if (board[map.y - p.y][map.x - p.x] == ME ||
-		board[map.y - p.y][map.x - p.x] == EN)
+	if (map.y + p.y < 0 || map.y + p.y >= elem.y ||
+		map.x + p.x < 0 || map.x + p.x >= elem.x)
+		return (0);
+	if (board[map.y + p.y][map.x + p.x] == ME ||
+		board[map.y + p.y][map.x + p.x] == EN)
 	{
 		if (p.x != 0 || p.y != 0)
-			return (1);
+			return (0);
 	}
-	if (board[map.y - p.y][map.x - p.x] != ME)
-		*score += board[map.y - p.y][map.x - p.x];
-	return (0);
+	if (board[map.y + p.y][map.x + p.x] != ME)
+		*score += board[map.y + p.y][map.x + p.x];
+	return (1);
 }
 
 int			score_before(t_filler *filler, t_pos map, t_pos p, int *score)
@@ -46,7 +46,7 @@ int			score_before(t_filler *filler, t_pos map, t_pos p, int *score)
 			if (board[p.y][p.x] == 1)
 			{
 				pos_set(&d, p.x - tmp.x, p.y - tmp.y);
-				if (score_count(*filler->map, map, d, score))
+				if (!score_count(*filler->map, map, d, score))
 					return (0);
 			}
 			p.x--;
@@ -72,7 +72,7 @@ int			score_after(t_filler *filler, t_pos map, t_pos p, int *score)
 			if (board[p.y][p.x] == 1)
 			{
 				pos_set(&d, p.x - tmp.x, p.y - tmp.y);
-				if (score_count(*filler->map, map, d, score))
+				if (!score_count(*filler->map, map, d, score))
 					return (0);
 			}
 			p.x++;
@@ -117,6 +117,7 @@ int solve(t_filler *filler)
 	t_pos	token;
 	int		score;
 
+	init_result(filler);
 	pos_set(&map, 0, 0);
 	pos_set(&token, 0, 0);
 	while (foreach_elem(filler->map, &map, ME))
@@ -126,13 +127,13 @@ int solve(t_filler *filler)
 			score = 0;
 			if (score_before(filler, map, token, &score) &&
 				score_after(filler, map, token, &score))
-				{
-					// FILE *f = fopen("../log.txt", "a+");
-					// fprintf(f, "score: %d\n", score);
-					// fclose(f);
-					printf("score: %d\n", score);
-				}
+			{
+				save_result(filler, map, token, score);
+			}
 		}
 	}
+	FILE *f = fopen("../log.txt", "a+");
+	fprintf(f, "-res : [%d %d] {%d %d}\n", filler->result.y, filler->result.x, filler->tmp_result.y, filler->tmp_result.x);
+	fclose(f);
 	return (1);
 }
