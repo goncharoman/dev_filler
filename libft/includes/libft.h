@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/24 14:07:06 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/09/29 15:14:05 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/09/29 16:27:18 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,4 +144,6 @@ char				*ft_ftoe(double n, size_t prec, int sign);
 char				*ft_lftoa(long double n, unsigned int prec, int sign);
 int 				ft_strarrlen(char **strarr);
 void				ft_strarrdel(char ***strarr);
+int 				ft_intarrlen(int **strarr);
+void				ft_intarrdel(int ***strarr);
 #endif
