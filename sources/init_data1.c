@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 16:12:50 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/09/25 16:27:23 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/09/29 03:17:11 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ static int	get_elem(int fd, t_elem *dest, char *buff, int e_flag)
 
 	params = ft_strsplit(buff, ' ');
 
-	// TODO: добавить error обработчик
-	// NOTE: если params != 2 ошибка
 	if (ft_strarrlen(params) != 3)
 		return (0);
 
