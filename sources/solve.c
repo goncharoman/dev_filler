@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 12:42:28 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/09/29 00:17:20 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/09/30 16:47:43 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,8 +132,5 @@ int solve(t_filler *filler)
 			}
 		}
 	}
-	FILE *f = fopen("../log.txt", "a+");
-	fprintf(f, "-res : [%d %d] {%d %d}\n", filler->result.y, filler->result.x, filler->tmp_result.y, filler->tmp_result.x);
-	fclose(f);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 13:53:51 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/09/30 03:35:10 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/09/30 18:46:49 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int main(void)
 		if (!init_data(0, filler))
 			break;
 		solve(filler);
-		// test(filler);
 		print_result(filler);
 		free_data(filler);
 	}
