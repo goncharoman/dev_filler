@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 01:49:37 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/09/29 02:27:06 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/09/30 03:14:15 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct	s_filler
 }				t_filler;
 
 t_filler	*init_filler(void);
-void		init_data(int fd, t_filler *filler);
+int			init_data(int fd, t_filler *filler);
 void 		init_result(t_filler *filler);
 void		pos_set(t_pos *p, int x, int y);
 int			get_player_info(int fd, t_filler *dest);
@@ -66,6 +66,7 @@ void 		print_result(t_filler *filler);
 int			set_me_en(char c, char en, char me);
 int 		set_str_dot(char c, char star, char dot);
 void		free_data(t_filler *filler);
+void 		free_filler(t_filler *filler);
 
 void	 	test_imap(t_elem *elem);
 int			test(t_filler *test);
