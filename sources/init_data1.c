@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 16:12:50 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/10/01 12:07:01 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/01 22:43:32 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ static int	get_elem(int fd, t_elem *dest, char *buff, int e_flag)
 // читаем ввод
 int get_params(int fd, t_filler *dest)
 {
-	char *buff;
-	int err;
+	char	*buff;
+	int		err;
 
 	// читаем в buff, err - хранит состояние чтения
 	while ((err = get_next_line(fd, &buff)) > 0)
@@ -110,7 +110,6 @@ int get_params(int fd, t_filler *dest)
 		if (ft_strncmp(buff, "Plateau", 7) == 0)
 		{
 			get_elem(fd, dest->map, buff, E_MAP);
-			test_input(dest->map);
 		}
 		// если токен
 		else if (ft_strncmp(buff, "Piece", 5) == 0)

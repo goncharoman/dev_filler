@@ -6,7 +6,7 @@
 #    By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/24 13:55:20 by ujyzene           #+#    #+#              #
-#    Updated: 2019/09/30 02:35:32 by ujyzene          ###   ########.fr        #
+#    Updated: 2019/10/01 16:14:51 by ujyzene          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,6 +103,7 @@ FILES = ft_abs.c \
 		ft_lftoa.c \
 		ft_strarrlen.c \
 		ft_strarrdel.c \
+		ft_readline.c \
 		get_next_line.c
 
 OBJ = $(FILES:%.c=%.o)

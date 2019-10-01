@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 14:45:00 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/10/01 13:35:18 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/01 22:38:27 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	get_player_info(int fd, t_filler *dest, char *player_call)
 	char *buff;
 	int player_nbr;
 
-	get_next_line(fd, &buff);
+	// get_next_line(fd, &buff);
+	buff = ft_readline(fd);
 	if (!runstr_check(buff, player_call, &player_nbr))
 	{
 		free(buff);
