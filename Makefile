@@ -6,7 +6,7 @@
 #    By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/20 00:11:07 by ujyzene           #+#    #+#              #
-#    Updated: 2019/09/29 01:56:39 by ujyzene          ###   ########.fr        #
+#    Updated: 2019/10/01 11:11:58 by ujyzene          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ FILES = main.c \
 		helpers.c \
 		solve.c \
 		result.c \
+		free.c \
 		test.c
 
 LIBFT_INCL = -I $(LIB_DIR)/includes

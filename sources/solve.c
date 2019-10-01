@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 12:42:28 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/09/30 16:47:43 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/01 12:15:04 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ static int	foreach_elem(t_elem *elem, t_pos *p, int des)
 	return (0);
 }
 
+// реашем
 int solve(t_filler *filler)
 {
 	t_pos	map;
@@ -120,11 +121,14 @@ int solve(t_filler *filler)
 	init_result(filler);
 	pos_set(&map, 0, 0);
 	pos_set(&token, 0, 0);
+	// берем следующую точку в нашей фигуре
 	while (foreach_elem(filler->map, &map, ME))
 	{
+		// берем следующий '*' в токене
 		while (foreach_elem(filler->token, &token, 1))
 		{
 			score = 0;
+			// считаем счет до и после
 			if (score_before(filler, map, token, &score) &&
 				score_after(filler, map, token, &score))
 			{

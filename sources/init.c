@@ -6,33 +6,40 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 14:45:00 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/09/30 18:45:17 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/01 13:35:18 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
-int	get_player_info(int fd, t_filler *dest)
+// определяем из первой строки передаваемой программе
+// какой символ имеет наш игрок
+int	get_player_info(int fd, t_filler *dest, char *player_call)
 {
 	char *buff;
-	char *tmp;
+	int player_nbr;
 
 	get_next_line(fd, &buff);
-	tmp = buff;
-	if (ft_strcmp(tmp, "p1"))
+	if (!runstr_check(buff, player_call, &player_nbr))
+	{
+		free(buff);
+		return (0);
+	}
+	if (player_nbr == 1)
 	{
 		dest->me = 'O';
 		dest->en = 'X';
 	}
-	else if (ft_strcmp(tmp, "p2"))
+	else if (player_nbr == 2)
 	{
-		dest->me = 'O';
-		dest->en = 'X';
+		dest->me = 'X';
+		dest->en = 'O';
 	}
 	free(buff);
 	return (1);
 }
 
+// инициализация структуры t_elem
 static t_elem	*init_elem(void)
 {
 	t_elem *tmp;
@@ -45,6 +52,7 @@ static t_elem	*init_elem(void)
 	return (tmp);
 }
 
+// общяя инициализация filler структуры
 t_filler *init_filler(void)
 {
 	t_filler *filler;
@@ -57,40 +65,36 @@ t_filler *init_filler(void)
 	return (filler);
 }
 
-void pos_set(t_pos *p, int x, int y)
+// инициализация элементов filler->map и filler->token
+int init_filler_elems(t_filler *filler)
 {
-	p->x = x;
-	p->y = y;
+	if (filler->map == NULL)
+		if (!(filler->map = init_elem()))
+			return (0);
+	if (filler->token == NULL)
+		if (!(filler->token = init_elem()))
+			return (0);
+	return (1);
 }
 
 int init_data(int fd, t_filler *filler)
 {
 	int err;
 
-	if (filler->map == NULL)
-		filler->map = init_elem();
-	if (filler->token == NULL)
-		filler->token = init_elem();
+	if (!init_filler_elems(filler))
+		return(return_error("ERROR: filler initialization error"));
 	if ((err = get_params(fd, filler)) != 1)
 	{
-		// если 0 - закончил чтение
-		// если -1 - ошибка чтения
-		return (0);
+		if (err == -1)
+			return (return_error("ERROR: read error"));
+		else if (err == 0)
+			return (0);
 	}
 	if (!init_imap(filler->map, filler->en, filler->me, &set_me_en))
-	{
-		// ошибка инициализации map -> imap
-		return (0);
-	}
+		return(return_error("ERROR: filler imap initialization error"));
 	if (!init_imap(filler->token, '*', '.', &set_str_dot))
-	{
-		// ошибка инициализации token -> imap
-		return (0);
-	}
+		return(return_error("ERROR: filler itoken initialization error"));
 	if (!get_heat_map(filler))
-	{
-		// ошибка ининциализации тепловой карты
-		return (0);
-	}
+		return(return_error("ERROR: heat map initialization error"));
 	return (1);
 }

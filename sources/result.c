@@ -6,12 +6,13 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 22:33:20 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/09/30 18:45:55 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/01 12:20:34 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
+// сохраняем результат
 void save_result(t_filler *filler, t_pos map, t_pos token, int score)
 {
 	if ((score <= filler->score && score > 0) ||
@@ -27,6 +28,7 @@ void save_result(t_filler *filler, t_pos map, t_pos token, int score)
 	}
 }
 
+// инициализируем елементы структуры filler храняшие результат
 void init_result(t_filler *filler)
 {
 	filler->score = 0;
@@ -37,6 +39,7 @@ void init_result(t_filler *filler)
 	filler->tmp_result.y = 0;
 }
 
+// вывод результата
 void print_result(t_filler *filler)
 {
 	t_pos p;

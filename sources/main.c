@@ -6,18 +6,23 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 13:53:51 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/09/30 18:46:49 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/01 13:47:28 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
-int main(void)
+int main(int argc, char *argv[])
 {
 	t_filler	*filler;
 
+	argc = 0;
 	filler = init_filler();
-	get_player_info(0, filler);
+	if (!get_player_info(0, filler, argv[0]))
+	{
+		free_filler(filler);
+		return (return_error("ERROR: wrong player info string"));
+	}
 	while (1)
 	{
 		if (!init_data(0, filler))
@@ -27,5 +32,5 @@ int main(void)
 		free_data(filler);
 	}
 	free_filler(filler);
-	return (0);
+	return (1);
 }
