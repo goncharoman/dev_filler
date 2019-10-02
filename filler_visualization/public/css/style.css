@@ -1,0 +1,91 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: #000000;
+  overflow-y: hidden;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100vw;
+  height: 100vh;
+}
+
+.main-toolbar {
+  min-width: 250px;
+  width: 30%;
+  background-color: #9DEED5;
+  padding: 30px;
+}
+
+.main-toolbar_select {
+  padding: 50px 0px;
+}
+
+.main-toolbar_header {
+  font-size: 60px;
+}
+
+.main-toolbar_winner {
+  display: block;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.main-toolbar_h {
+  display: block;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.main-toolbar_score {
+  display: block;
+  font-size: 14px;
+}
+
+.main-filler {
+  width: 70%;
+  background-color: #EEFCF8;
+}
+
+.form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.form-elem {
+  margin-bottom: 20px;
+}
+
+.form-elem:last-child {
+  margin-bottom: 50px;
+}
+
+.form-elem_header {
+  display: block;
+}
+
+.form-elem_select {
+  width: 100%;
+}
+/*# sourceMappingURL=style.css.map */
