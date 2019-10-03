@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 14:45:00 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/10/01 22:38:27 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/03 18:08:22 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,12 @@ int init_data(int fd, t_filler *filler)
 	}
 	if (!init_imap(filler->map, filler->en, filler->me, &set_me_en))
 		return(return_error("ERROR: filler imap initialization error"));
+	if (!imap_check(filler->map))
+		return (return_error("ERROR: wrong MAP"));
 	if (!init_imap(filler->token, '*', '.', &set_str_dot))
 		return(return_error("ERROR: filler itoken initialization error"));
+	if (!imap_check(filler->token))
+		return (return_error("ERROR: wrong TOKEN"));
 	if (!get_heat_map(filler))
 		return(return_error("ERROR: heat map initialization error"));
 	return (1);

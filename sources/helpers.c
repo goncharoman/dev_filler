@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 15:56:27 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/10/01 13:41:49 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/03 18:07:30 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int set_str_dot(char c, char star, char dot)
 		return (1);
 	else if (c == dot) // dot (.)
 		return (0);
-	return (-1);
+	return (-3);
 }
 
 // применяется для t_pos структуры для установки значений x и y
@@ -57,24 +57,4 @@ int return_error(char *msg)
 	}
 	ft_putchar_fd('\n', 2);
 	return (0);
-}
-
-int runstr_check(char *s, char *player_call, int *player_nbr)
-{
-	int ans[2];
-
-	if (ft_strncmp(s, "$$$ ", 4) == 0)
-		s += 4;
-	if (ft_strncmp(s, "exec ", 5) == 0)
-		s += 5;
-	if ((ans[0] = !!ft_strncmp(s, "p1 : ", 5)) == 0 ||
-		(ans[1] = !!ft_strncmp(s, "p2 : ", 5)) == 0)
-		s += 5;
-	if (ft_strstr(s, player_call) != NULL)
-	{
-		*player_nbr = ans[0] == 0 ? 1 : 2;
-		return (1);
-	}
-	return (0);
-
 }

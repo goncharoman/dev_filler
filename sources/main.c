@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 13:53:51 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/10/01 22:43:24 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/03 17:51:20 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ int main(int argc, char *argv[])
 		free_data(filler);
 	}
 	free_filler(filler);
-	return (1);
+	return (0);
 }
