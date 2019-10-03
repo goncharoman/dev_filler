@@ -6,20 +6,17 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 14:45:00 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/10/01 22:38:27 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/03 12:58:42 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
-// определяем из первой строки передаваемой программе
-// какой символ имеет наш игрок
-int	get_player_info(int fd, t_filler *dest, char *player_call)
+int				get_player_info(int fd, t_filler *dest, char *player_call)
 {
-	char *buff;
-	int player_nbr;
+	char	*buff;
+	int		player_nbr;
 
-	// get_next_line(fd, &buff);
 	buff = ft_readline(fd);
 	if (!runstr_check(buff, player_call, &player_nbr))
 	{
@@ -40,23 +37,21 @@ int	get_player_info(int fd, t_filler *dest, char *player_call)
 	return (1);
 }
 
-// инициализация структуры t_elem
 static t_elem	*init_elem(void)
 {
-	t_elem *tmp;
+	t_elem	*tmp;
 
 	if (!(tmp = (t_elem*)malloc(sizeof(t_elem))))
 		return (NULL);
-	tmp->x = 0; // col
-	tmp->y = 0;	// row
+	tmp->x = 0;
+	tmp->y = 0;
 	tmp->data = NULL;
 	return (tmp);
 }
 
-// общяя инициализация filler структуры
-t_filler *init_filler(void)
+t_filler		*init_filler(void)
 {
-	t_filler *filler;
+	t_filler	*filler;
 
 	filler = (t_filler*)malloc(sizeof(t_filler));
 	filler->token = NULL;
@@ -66,8 +61,7 @@ t_filler *init_filler(void)
 	return (filler);
 }
 
-// инициализация элементов filler->map и filler->token
-int init_filler_elems(t_filler *filler)
+int				init_filler_elems(t_filler *filler)
 {
 	if (filler->map == NULL)
 		if (!(filler->map = init_elem()))
@@ -78,12 +72,12 @@ int init_filler_elems(t_filler *filler)
 	return (1);
 }
 
-int init_data(int fd, t_filler *filler)
+int				init_data(int fd, t_filler *filler)
 {
-	int err;
+	int	err;
 
 	if (!init_filler_elems(filler))
-		return(return_error("ERROR: filler initialization error"));
+		return (return_error("ERROR: filler initialization error"));
 	if ((err = get_params(fd, filler)) != 1)
 	{
 		if (err == -1)
@@ -92,10 +86,10 @@ int init_data(int fd, t_filler *filler)
 			return (0);
 	}
 	if (!init_imap(filler->map, filler->en, filler->me, &set_me_en))
-		return(return_error("ERROR: filler imap initialization error"));
+		return (return_error("ERROR: filler imap initialization error"));
 	if (!init_imap(filler->token, '*', '.', &set_str_dot))
-		return(return_error("ERROR: filler itoken initialization error"));
+		return (return_error("ERROR: filler itoken initialization error"));
 	if (!get_heat_map(filler))
-		return(return_error("ERROR: heat map initialization error"));
+		return (return_error("ERROR: heat map initialization error"));
 	return (1);
 }

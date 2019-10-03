@@ -6,21 +6,16 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 15:56:27 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/10/01 13:41:49 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/03 12:50:02 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
-// следующие 2 функции передавются в вызов init_imap
-// нужны для интерпритации смволов в индексной карте
-
-// для filler->map: заменяет симовол нашего игрока на -2, противника на -1
-int	set_me_en(char c, char en, char me)
+int		set_me_en(char c, char en, char me)
 {
 	if (c == '.')
 		return (0);
-	// это для нововй filler VM
 	else if (c == en || ft_toupper(c) == en)
 		return (EN);
 	else if (c == me || ft_toupper(c) == me)
@@ -29,24 +24,22 @@ int	set_me_en(char c, char en, char me)
 		return (-3);
 }
 
-// для filler->token: заменяет символ '*' на 1 и символ '.' на 0
-int set_str_dot(char c, char star, char dot)
+int		set_str_dot(char c, char star, char dot)
 {
-	if (c == star) // star (*)
+	if (c == star)
 		return (1);
-	else if (c == dot) // dot (.)
+	else if (c == dot)
 		return (0);
 	return (-1);
 }
 
-// применяется для t_pos структуры для установки значений x и y
-void pos_set(t_pos *p, int x, int y)
+void	pos_set(t_pos *p, int x, int y)
 {
 	p->x = x;
 	p->y = y;
 }
 
-int return_error(char *msg)
+int		return_error(char *msg)
 {
 	ft_putstr_fd(msg, 2);
 	if (errno != 0)
@@ -59,9 +52,9 @@ int return_error(char *msg)
 	return (0);
 }
 
-int runstr_check(char *s, char *player_call, int *player_nbr)
+int		runstr_check(char *s, char *player_call, int *player_nbr)
 {
-	int ans[2];
+	int	ans[2];
 
 	if (ft_strncmp(s, "$$$ ", 4) == 0)
 		s += 4;
@@ -76,5 +69,4 @@ int runstr_check(char *s, char *player_call, int *player_nbr)
 		return (1);
 	}
 	return (0);
-
 }

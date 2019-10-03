@@ -6,13 +6,13 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 13:53:51 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/10/01 22:43:24 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/03 12:58:22 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	t_filler	*filler;
 
@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 	while (1)
 	{
 		if (!init_data(0, filler))
-			break;
+			break ;
 		solve(filler);
 		print_result(filler);
 		free_data(filler);
