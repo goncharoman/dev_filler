@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/24 14:07:06 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/10/03 13:18:22 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/03 13:19:44 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <get_next_line.h>
 # define STCK_OUT -2147483648
 # define MAX(n1, n2) (n1 >= n2 ? n1 : n2)
-	# define ABS(n) ((n < 0) ? -n : n)
+# define ABS(n) ((n < 0) ? -n : n)
 
 typedef struct		s_list
 {
