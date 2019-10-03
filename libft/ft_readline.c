@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 15:05:10 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/10/03 13:11:04 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/03 15:54:48 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	write_buff(char fd, char **s, int size)
 				err = -1;
 				break ;
 			}
-		*s[i++] = c;
+		(*s)[i++] = c;
 	}
 	if (err == -1)
 	{
