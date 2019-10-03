@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 12:28:43 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/09/22 15:11:30 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/03 13:02:38 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static char		*gnl_strdup(char **s, int offset)
 	return (tmp);
 }
 
-int		get_next_line(int fd, char **line)
+int				get_next_line(int fd, char **line)
 {
 	char		buff[BUFF_SIZE + 1];
 	int			offset;
