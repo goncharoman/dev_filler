@@ -6,13 +6,13 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 02:08:37 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/10/04 15:10:09 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/04 15:20:04 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
-static void fill_heat(t_elem *dest, int i, int x, int y)
+static void	fill_heat(t_elem *dest, int i, int x, int y)
 {
 	int	**map;
 
@@ -35,7 +35,7 @@ static void fill_heat(t_elem *dest, int i, int x, int y)
 		map[y][x] = i + 1;
 }
 
-void fill_heat_map(t_elem *dest)
+void		fill_heat_map(t_elem *dest)
 {
 	int	i;
 	int	x;
@@ -62,7 +62,7 @@ void fill_heat_map(t_elem *dest)
 	}
 }
 
-static void enemy_heat(t_elem *dest, int x, int y)
+static void	enemy_heat(t_elem *dest, int x, int y)
 {
 	int	**map;
 
@@ -85,7 +85,7 @@ static void enemy_heat(t_elem *dest, int x, int y)
 		map[y][x] = 1;
 }
 
-void	init_heat_map(t_elem *dest)
+void		init_heat_map(t_elem *dest)
 {
 	int	x;
 	int	y;
@@ -106,7 +106,7 @@ void	init_heat_map(t_elem *dest)
 	}
 }
 
-int		get_heat_map(t_filler *dest)
+int			get_heat_map(t_filler *dest)
 {
 	init_heat_map(dest->map);
 	fill_heat_map(dest->map);

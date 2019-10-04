@@ -6,13 +6,13 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 22:33:20 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/10/04 15:10:05 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/04 15:21:51 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
-void save_result(t_filler *filler, t_pos map, t_pos token, int score)
+void	save_result(t_filler *filler, t_pos map, t_pos token, int score)
 {
 	if ((score <= filler->score && score > 0) ||
 		(score > 0 && filler->score == 0))
@@ -27,7 +27,7 @@ void save_result(t_filler *filler, t_pos map, t_pos token, int score)
 	}
 }
 
-void init_result(t_filler *filler)
+void	init_result(t_filler *filler)
 {
 	filler->score = 0;
 	filler->tmp_score = 0;
@@ -37,7 +37,7 @@ void init_result(t_filler *filler)
 	filler->tmp_result.y = 0;
 }
 
-void print_result(t_filler *filler)
+void	print_result(t_filler *filler)
 {
 	t_pos	p;
 
