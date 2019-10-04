@@ -6,7 +6,7 @@
 #    By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/20 00:11:07 by ujyzene           #+#    #+#              #
-#    Updated: 2019/10/04 14:00:36 by ujyzene          ###   ########.fr        #
+#    Updated: 2019/10/04 18:03:34 by ujyzene          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME = ujyzene.filler
 
 CC = gcc
-FLAGS = -g -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 
 SRCS_PATH = sources
 TEMPS_PATH = temp
