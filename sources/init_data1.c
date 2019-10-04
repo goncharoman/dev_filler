@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 16:12:50 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/10/01 22:43:32 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/04 12:35:48 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,17 @@ int		init_imap(t_elem *elem, char c1, char c2, int (*f)(char, char, char))
 		return (0);
 	tmp = (char**)elem->data;
 	i = 0;
-	while (tmp[i])
+	while (i < elem->y && tmp[i])
 	{
 		imap[i] = (int*)malloc(sizeof(int) * elem->x);
 		j = 0;
-		while (tmp[i][j])
+		while (j < elem->x && tmp[i][j])
 		{
 			imap[i][j] = (*f)(tmp[i][j], c1, c2);
 			j++;
 		}
+		while (j < elem->x)
+			imap[i][j++] = -3;
 		i++;
 	}
 	ft_strarrdel(&tmp);
@@ -52,9 +54,9 @@ int		init_imap(t_elem *elem, char c1, char c2, int (*f)(char, char, char))
 // переданный токен в filler->token
 static int get_elemdata(int fd, t_elem *dest, int e_flag)
 {
-	char *buff;
-	char **tmp;
-	int count;
+	char	*buff;
+	char	**tmp;
+	int		count;
 
 	// пропускаем первую строку с нумерацией cols в карте
 	if (e_flag == E_MAP)
@@ -91,6 +93,9 @@ static int	get_elem(int fd, t_elem *dest, char *buff, int e_flag)
 	dest->y = ft_atoi(params[1]);
 	dest->x = ft_atoi(params[2]);
 	ft_strarrdel(&params);
+
+	if (dest->y <= 0 && dest->x <= 0)
+		return (0);
 	// e_flag - флаг сообщающий что обрабатывае
 	// E_MAP - карту
 	// E_TOKEN - токен
