@@ -6,15 +6,15 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 17:57:25 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/10/04 12:08:32 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/04 13:56:33 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
-int runstr_check(char *s, char *player_call, int *player_nbr)
+int	runstr_check(char *s, char *player_call, int *player_nbr)
 {
-	int ans[2];
+	int	ans[2];
 
 	if (ft_strncmp(s, "$$$ ", 4) == 0)
 		s += 4;
@@ -32,7 +32,7 @@ int runstr_check(char *s, char *player_call, int *player_nbr)
 
 }
 
-int imap_check(t_elem *elem)
+int	imap_check(t_elem *elem)
 {
     int x;
     int y;
@@ -54,7 +54,7 @@ int imap_check(t_elem *elem)
     return (1);
 }
 
-int check_params(t_filler *filler)
+int	check_params(t_filler *filler)
 {
 	return (filler->map->x > 0 && filler->map->y > 0 &&
 			filler->token->x > 0 && filler->token->y > 0);

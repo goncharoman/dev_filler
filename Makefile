@@ -6,7 +6,7 @@
 #    By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/20 00:11:07 by ujyzene           #+#    #+#              #
-#    Updated: 2019/10/03 18:05:50 by ujyzene          ###   ########.fr        #
+#    Updated: 2019/10/04 14:00:36 by ujyzene          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,7 @@ FILES = main.c \
 		solve.c \
 		result.c \
 		free.c \
-		check.c \
-		test.c
+		check.c
 
 LIBFT_INCL = -I $(LIB_DIR)/includes
 LIBFT_LINK = -L$(LIB_DIR) -lft

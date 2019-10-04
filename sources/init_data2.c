@@ -6,13 +6,12 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 02:08:37 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/10/01 12:12:24 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/04 13:58:22 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
-// аналогично enemy_heat
 static void fill_heat(t_elem *dest, int i, int x, int y)
 {
 	int	**map;
@@ -36,7 +35,6 @@ static void fill_heat(t_elem *dest, int i, int x, int y)
 		map[y][x] = i + 1;
 }
 
-// по принципу init_heat_map заполняем тепловую карту
 void fill_heat_map(t_elem *dest)
 {
 	int i;
@@ -64,10 +62,6 @@ void fill_heat_map(t_elem *dest)
 	}
 }
 
-// заплоняем возможные 9 ячеек вокруг точки в фигуре противника
-// [1] [1] [1]
-// [1]  -1 [1]
-// [1] [1] [1]
 static void enemy_heat(t_elem *dest, int x, int y)
 {
 	int	**map;
@@ -91,8 +85,6 @@ static void enemy_heat(t_elem *dest, int x, int y)
 		map[y][x] = 1;
 }
 
-// инициализация тпловой карты
-// расставляем индекс 1 вокруг фигуры противника
 void	init_heat_map(t_elem *dest)
 {
 	int x;
@@ -114,12 +106,9 @@ void	init_heat_map(t_elem *dest)
 	}
 }
 
-// полчаем тепловую карту из индексной imap
 int		get_heat_map(t_filler *dest)
 {
-	// инициализация
 	init_heat_map(dest->map);
-	// заполнение
 	fill_heat_map(dest->map);
 	return (1);
 }
