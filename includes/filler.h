@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 01:49:37 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/10/03 18:05:36 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/04 12:07:15 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void		free_data(t_filler *filler);
 void 		free_filler(t_filler *filler);
 int			return_error(char *msg);
 int			imap_check(t_elem *elem);
+int 		check_params(t_filler *filler);
 
 void	 	test_imap(t_elem *elem);
 int			test(t_filler *test);

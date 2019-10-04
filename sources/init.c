@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 14:45:00 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/10/03 18:08:22 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/04 12:08:59 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,10 @@ int init_data(int fd, t_filler *filler)
 	{
 		if (err == -1)
 			return (return_error("ERROR: read error"));
-		else if (err == 0)
-			return (0);
+		return (0);
 	}
+	if (!check_params(filler))
+		return (return_error("ERROR: wrong params"));
 	if (!init_imap(filler->map, filler->en, filler->me, &set_me_en))
 		return(return_error("ERROR: filler imap initialization error"));
 	if (!imap_check(filler->map))

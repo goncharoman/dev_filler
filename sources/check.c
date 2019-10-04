@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 17:57:25 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/10/03 18:08:41 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/04 12:08:32 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,10 @@ int imap_check(t_elem *elem)
         y++;
     }
     return (1);
+}
+
+int check_params(t_filler *filler)
+{
+	return (filler->map->x > 0 && filler->map->y > 0 &&
+			filler->token->x > 0 && filler->token->y > 0);
 }
