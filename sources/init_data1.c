@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 16:12:50 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/10/04 15:19:18 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/04 17:26:47 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static int	get_elem(int fd, t_elem *dest, char *buff, int e_flag)
 	dest->y = ft_atoi(params[1]);
 	dest->x = ft_atoi(params[2]);
 	ft_strarrdel(&params);
-	if (dest->y <= 0 && dest->x <= 0)
+	if (dest->y <= 0 || dest->x <= 0)
 		return (0);
 	return (get_elemdata(fd, dest, e_flag));
 }
@@ -93,11 +93,11 @@ int			get_params(int fd, t_filler *dest)
 			get_elem(fd, dest->map, buff, E_MAP);
 		}
 		else if (ft_strncmp(buff, "Piece", 5) == 0)
-			if (get_elem(fd, dest->token, buff, E_TOKEN))
-			{
-				ft_strdel(&buff);
-				return (1);
-			}
+		{
+			get_elem(fd, dest->token, buff, E_TOKEN);
+			ft_strdel(&buff);
+			return (1);
+		}
 		ft_strdel(&buff);
 	}
 	return (err);

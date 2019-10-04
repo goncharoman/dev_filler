@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 11:01:05 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/10/04 15:11:02 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/04 17:14:11 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ void	free_elem(t_elem **elem)
 	i = 0;
 	if (elem == NULL || *elem == NULL)
 		return ;
-	while (i < (*elem)->y)
-		free((*elem)->data[i++]);
+	if ((*elem)->data != NULL)
+	{
+		while (i < (*elem)->y && (*elem)->data[i])
+			free((*elem)->data[i++]);
+	}
 	free((*elem)->data);
 	free(*elem);
 	*elem = NULL;

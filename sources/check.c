@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 17:57:25 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/10/04 15:17:34 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/04 15:40:46 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,17 @@ int	runstr_check(char *s, char *player_call, int *player_nbr)
 
 	if (ft_strncmp(s, "$$$ ", 4) == 0)
 		s += 4;
+	else
+		return (0);
 	if (ft_strncmp(s, "exec ", 5) == 0)
 		s += 5;
+	else
+		return (0);
 	if ((ans[0] = !!ft_strncmp(s, "p1 : ", 5)) == 0 ||
 		(ans[1] = !!ft_strncmp(s, "p2 : ", 5)) == 0)
 		s += 5;
+	else
+		return (0);
 	if (ft_strstr(s, player_call) != NULL)
 	{
 		*player_nbr = ans[0] == 0 ? 1 : 2;
