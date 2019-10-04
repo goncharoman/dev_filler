@@ -6,7 +6,7 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 12:42:28 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/10/03 12:56:58 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/04 15:10:04 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ static int	foreach_elem(t_elem *elem, t_pos *p, int des)
 	return (0);
 }
 
-int			solve(t_filler *filler)
+int solve(t_filler *filler)
 {
 	t_pos	map;
 	t_pos	token;

@@ -6,13 +6,13 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 14:45:00 by ujyzene           #+#    #+#             */
-/*   Updated: 2019/10/03 12:58:42 by ujyzene          ###   ########.fr       */
+/*   Updated: 2019/10/04 15:11:04 by ujyzene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
-int				get_player_info(int fd, t_filler *dest, char *player_call)
+int	get_player_info(int fd, t_filler *dest, char *player_call)
 {
 	char	*buff;
 	int		player_nbr;
@@ -49,7 +49,7 @@ static t_elem	*init_elem(void)
 	return (tmp);
 }
 
-t_filler		*init_filler(void)
+t_filler *init_filler(void)
 {
 	t_filler	*filler;
 
@@ -61,7 +61,7 @@ t_filler		*init_filler(void)
 	return (filler);
 }
 
-int				init_filler_elems(t_filler *filler)
+int init_filler_elems(t_filler *filler)
 {
 	if (filler->map == NULL)
 		if (!(filler->map = init_elem()))
@@ -82,13 +82,18 @@ int				init_data(int fd, t_filler *filler)
 	{
 		if (err == -1)
 			return (return_error("ERROR: read error"));
-		else if (err == 0)
-			return (0);
+		return (0);
 	}
+	if (!check_params(filler))
+		return (return_error("ERROR: wrong params"));
 	if (!init_imap(filler->map, filler->en, filler->me, &set_me_en))
-		return (return_error("ERROR: filler imap initialization error"));
+		return(return_error("ERROR: filler imap initialization error"));
+	if (!imap_check(filler->map))
+		return (return_error("ERROR: wrong MAP"));
 	if (!init_imap(filler->token, '*', '.', &set_str_dot))
-		return (return_error("ERROR: filler itoken initialization error"));
+		return(return_error("ERROR: filler itoken initialization error"));
+	if (!imap_check(filler->token))
+		return (return_error("ERROR: wrong TOKEN"));
 	if (!get_heat_map(filler))
 		return (return_error("ERROR: heat map initialization error"));
 	return (1);

@@ -91,13 +91,13 @@ function getFrames(data) {
 
 function getFill(c) {
   if (c == 'X')
-    return (C_P1_DONE);
-  else if (c == 'x')
-    return (C_P1_LAST);
-  else if (c == 'O')
     return (C_P2_DONE);
-  else if (c == 'o')
+  else if (c == 'x')
     return (C_P2_LAST);
+  else if (c == 'O')
+    return (C_P1_DONE);
+  else if (c == 'o')
+    return (C_P1_LAST);
   else
     return (255);
 }

@@ -6,14 +6,22 @@
 /*   By: ujyzene <ujyzene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 16:12:50 by ujyzene           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/10/03 12:59:09 by ujyzene          ###   ########.fr       */
+=======
+/*   Updated: 2019/10/04 13:58:00 by ujyzene          ###   ########.fr       */
+>>>>>>> 0dcca963c223a5b770207001bc1f0db15c96d553
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
+<<<<<<< HEAD
 int			init_imap(t_elem *elem, char c1, char c2,
 			int (*f)(char, char, char))
+=======
+int		init_imap(t_elem *elem, char c1, char c2, int (*f)(char, char, char))
+>>>>>>> 0dcca963c223a5b770207001bc1f0db15c96d553
 {
 	int		**imap;
 	char	**tmp;
@@ -24,15 +32,17 @@ int			init_imap(t_elem *elem, char c1, char c2,
 		return (0);
 	tmp = (char**)elem->data;
 	i = 0;
-	while (tmp[i])
+	while (i < elem->y && tmp[i])
 	{
 		imap[i] = (int*)malloc(sizeof(int) * elem->x);
 		j = 0;
-		while (tmp[i][j])
+		while (j < elem->x && tmp[i][j])
 		{
 			imap[i][j] = (*f)(tmp[i][j], c1, c2);
 			j++;
 		}
+		while (j < elem->x)
+			imap[i][j++] = -3;
 		i++;
 	}
 	ft_strarrdel(&tmp);
@@ -40,7 +50,11 @@ int			init_imap(t_elem *elem, char c1, char c2,
 	return (1);
 }
 
+<<<<<<< HEAD
 static int	get_elemdata(int fd, t_elem *dest, int e_flag)
+=======
+static int get_elemdata(int fd, t_elem *dest, int e_flag)
+>>>>>>> 0dcca963c223a5b770207001bc1f0db15c96d553
 {
 	char	*buff;
 	char	**tmp;
@@ -74,10 +88,12 @@ static int	get_elem(int fd, t_elem *dest, char *buff, int e_flag)
 	dest->y = ft_atoi(params[1]);
 	dest->x = ft_atoi(params[2]);
 	ft_strarrdel(&params);
+	if (dest->y <= 0 && dest->x <= 0)
+		return (0);
 	return (get_elemdata(fd, dest, e_flag));
 }
 
-int			get_params(int fd, t_filler *dest)
+int get_params(int fd, t_filler *dest)
 {
 	char	*buff;
 	int		err;
